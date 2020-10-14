@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText user;
-
+    private static int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +17,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
-        //Push
+        EditText txtUser = (EditText)findViewById(R.id.txtUser);
+        EditText txtPass = (EditText)findViewById(R.id.txtPass);
+        if(!txtUser.getText().toString().equals("admin") || !txtPass.getText().toString().equals("liceo")){
+            Toast.makeText(this, getString(R.string.LoginFailed), Toast.LENGTH_SHORT).show();
+            i++;
+            if(i>=3){
+                i=0;
+                this.finish();
+            }
+        }else{
+            Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show();
+        }
     }
 }
