@@ -4,4 +4,6 @@
     <string name="Password">Password</string>
     <string name="Login">Login</string>
     <string name="LoginFailed">Incorrect user/pass. Login Failed!</string>
+    <string name="title_activity_db_info">DbInfo</string>
+    <string name="pList">Player List</string>
 </resources>
