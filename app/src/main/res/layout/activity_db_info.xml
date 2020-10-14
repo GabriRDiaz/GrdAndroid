@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/db_background"
     tools:context=".DbInfo">
 
     <ImageButton
@@ -20,11 +21,20 @@
 
     <TextView
         android:id="@+id/pList"
-        android:layout_width="176dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="187dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:shadowColor="#000000"
+        android:shadowDx="13"
+        android:shadowDy="20"
+        android:shadowRadius="20"
         android:text="@string/pList"
+        android:textAllCaps="true"
+        android:textColor="@color/txtLogin"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageButton3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
