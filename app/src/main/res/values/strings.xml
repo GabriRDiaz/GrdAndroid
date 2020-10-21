@@ -6,4 +6,7 @@
     <string name="LoginFailed">Incorrect user/pass. Login Failed!</string>
     <string name="title_activity_db_info">DbInfo</string>
     <string name="pList">Player List</string>
+    <string name="Accept">Accept</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Delete">Delete</string>
 </resources>

@@ -2,6 +2,7 @@ package com.liceolapaz.dam.grd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ public class DbInfo extends AppCompatActivity {
     }
 
     public void addPlayer(View view) {
-        Toast.makeText(this, "Button Working!", Toast.LENGTH_SHORT).show();
+        Intent initAddInfo = new Intent(this, addInfo.class);
+        startActivity(initAddInfo);
     }
 }
