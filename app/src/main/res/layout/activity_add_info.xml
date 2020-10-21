@@ -10,8 +10,9 @@
         android:id="@+id/tableLayout"
         android:layout_width="407dp"
         android:layout_height="372dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -52,39 +53,34 @@
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
         app:layout_constraintVertical_bias="0.099">
 
+        <!--Duplicated margins to support newer APIs-->
         <Button
             android:id="@+id/accept"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="120dp"
-            android:layout_height="75dp"
+            android:layout_width="110dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="15dp"
             android:layout_marginEnd="15dp"
             android:text="@string/Accept" />
-
         <Button
             android:id="@+id/cancel"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="120dp"
-            android:layout_height="75dp"
+            android:layout_width="110dp"
+            android:layout_height="65dp"
+            android:layout_marginRight="15dp"
             android:layout_marginEnd="15dp"
             android:text="@string/Cancel" />
 
         <Button
             android:id="@+id/delete"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="120dp"
-            android:layout_height="75dp"
+            android:layout_width="110dp"
+            android:layout_height="65dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/Delete" />
     </TableRow>
-
-    <TextView
-        android:id="@+id/playerName"
-        android:layout_width="141dp"
-        android:layout_height="36dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
