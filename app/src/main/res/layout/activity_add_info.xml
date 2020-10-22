@@ -19,27 +19,114 @@
         <TableRow
             android:id="@+id/code"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/codeTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Code" />
+
+            <EditText
+                android:id="@+id/addId"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/nameTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Name" />
+
+            <EditText
+                android:id="@+id/addName"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/price"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/priceTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Price" />
+
+            <EditText
+                android:id="@+id/addPrice"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+        </TableRow>
 
         <TableRow
             android:id="@+id/position"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/positionTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Position" />
+
+            <Spinner
+                android:id="@+id/addposition"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:ems="10"
+                android:inputType="textPersonName"/>
+        </TableRow>
 
         <TableRow
             android:id="@+id/points"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/pointsTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Points" />
+
+            <EditText
+                android:id="@+id/addPoints"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+        </TableRow>
     </TableLayout>
 
     <TableRow
@@ -63,7 +150,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginRight="15dp"
             android:layout_marginEnd="15dp"
-            android:text="@string/Accept" />
+            android:text="@string/Accept"
+            android:onClick="acceptAddInfo"/>
         <Button
             android:id="@+id/cancel"
             style="?android:attr/borderlessButtonStyle"
@@ -71,7 +159,8 @@
             android:layout_height="65dp"
             android:layout_marginRight="15dp"
             android:layout_marginEnd="15dp"
-            android:text="@string/Cancel" />
+            android:text="@string/Cancel"
+            android:onClick="cancelAddInfo"/>
 
         <Button
             android:id="@+id/delete"
@@ -80,7 +169,8 @@
             android:layout_height="65dp"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/Delete" />
+            android:text="@string/Delete"
+            android:onClick="deleteInfo"/>
     </TableRow>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

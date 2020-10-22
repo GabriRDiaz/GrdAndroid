@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+
 import static android.app.PendingIntent.getActivity;
 
 public class addInfo extends AppCompatActivity {
@@ -50,7 +51,6 @@ public class addInfo extends AppCompatActivity {
     public void acceptAddInfo(View view) {
         txtDialog="Data will be saved in database";
         titleDialog="Accept";
-
     }
 
 //    private void createDialog(String txtDialog, String titleDialog, Bundle savedInstanceState){

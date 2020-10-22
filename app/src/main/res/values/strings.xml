@@ -9,4 +9,9 @@
     <string name="Accept">Accept</string>
     <string name="Cancel">Cancel</string>
     <string name="Delete">Delete</string>
+    <string name="Code">Code:</string>
+    <string name="Name">Name:</string>
+    <string name="Price">Price:</string>
+    <string name="Position">Position:</string>
+    <string name="Points">Points:</string>
 </resources>
