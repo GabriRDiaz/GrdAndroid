@@ -28,7 +28,7 @@ public class addInfo extends AppCompatActivity {
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this,
                         android.R.layout.simple_spinner_item, data);
-
+//
         adapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
 
