@@ -3,8 +3,10 @@ package com.liceolapaz.dam.grd;
 
 import android.content.Context;
 import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,21 +28,32 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        return new MyViewHolder(inflater.inflate(R.layout.recyclerview_rows, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int arrayPosition) {
+        holder.name.setText(String.valueOf(name.get(arrayPosition)));
+        holder.price.setText(String.valueOf(price.get(arrayPosition)));
+        holder.position.setText(String.valueOf(position.get(arrayPosition)));
+        holder.points.setText(String.valueOf(points.get(arrayPosition)));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return name.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView name, price, position, points;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            name = itemView.findViewById(R.id.playerName);
+            price = itemView.findViewById(R.id.playerPrice);
+            position = itemView.findViewById(R.id.playerPos);
+            points = itemView.findViewById(R.id.playerPoints);
         }
     }
 }
