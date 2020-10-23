@@ -1,6 +1,7 @@
 package com.liceolapaz.dam.grd;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -16,7 +17,7 @@ public class DbInfo extends AppCompatActivity {
     RecyclerView recyclerView;
     Database db;
     ArrayList<String> name, price, position, points;
-
+    CustomAdapter playerInfoAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,9 @@ public class DbInfo extends AppCompatActivity {
         recyclerView = findViewById(R.id.playerList);
 
        retrieveData();
+       playerInfoAdapter = new CustomAdapter(this, name, price,position,points);
+       recyclerView.setAdapter(playerInfoAdapter);
+       recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void retrieveData(){
@@ -41,11 +45,12 @@ public class DbInfo extends AppCompatActivity {
                 price.add(cursor.getString(1));
                 position.add(cursor.getString(2));
                 points.add(cursor.getString(3));
+        }
         }else{
             Toast.makeText(this, R.string.noData, Toast.LENGTH_SHORT).show();
-        }
     }}
-    private void addPlayer(View view) {
+
+    public void addPlayerBtn(View view) {
         Intent initAddInfo = new Intent(this, addInfo.class);
         startActivity(initAddInfo);
     }

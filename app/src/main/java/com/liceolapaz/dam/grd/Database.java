@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
     public final String CREATE_QUERY = "CREATE TABLE IF NOT EXISTS players(" +
-            "code INT(3) PRIMARY KEY AUTOINCREMENT, " +
+            "code INT(3) PRIMARY KEY, " +
             "name VARCHAR(45) NOT NULL, " +
             "price INT(10) NOT NULL, " +
             "position VARCHAR(15) NOT NULL, " +
@@ -34,22 +34,22 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_QUERY);
     }
 
-    public void addPlayer(SQLiteDatabase db, String name, int price, String position, int points){
-        db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put("name",name);
-        cv.put("price",price);
-        cv.put("position",position);
-        cv.put("points",points);
-
-        long result = db.insert("players", null, cv);
-        if(result!=-1){
-            Toast.makeText(, .getString(R.string.infoAdded), Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(, .getString(R.string.infoNotAdded), Toast.LENGTH_SHORT).show();;
-        }
-    }
+//    public void addPlayer(SQLiteDatabase db, String name, int price, String position, int points){
+//        db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//
+//        cv.put("name",name);
+//        cv.put("price",price);
+//        cv.put("position",position);
+//        cv.put("points",points);
+//
+//        long result = db.insert("players", null, cv);
+//        if(result!=-1){
+//            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();
+//        }else{
+//            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();;
+//        }
+//    }
 
     public Cursor readData(){
        SQLiteDatabase db = this.getReadableDatabase();
@@ -57,10 +57,7 @@ public class Database extends SQLiteOpenHelper {
        Cursor cursor = null;
        if(db!=null){
            cursor=db.rawQuery(SELECT_QUERY, null);
-           return cursor
-       }else{
-           onUpgrade();
-           return void
        }
+       return cursor;
     }
 }
