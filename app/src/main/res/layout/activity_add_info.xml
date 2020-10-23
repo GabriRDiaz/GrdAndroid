@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Code" />
-
+            <!--android:editable is deprecated-->
             <EditText
                 android:id="@+id/addId"
                 android:layout_width="298dp"
@@ -35,8 +35,7 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginLeft="60dp"
                 android:ems="10"
-                android:inputType="textPersonName"ç
-                <!--android:editable is deprecated-->
+                android:inputType="textPersonName"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:focusable="false"
@@ -143,7 +142,11 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.099">
+        app:layout_constraintVertical_bias="0.099"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
 
         <!--Duplicated margins to support newer APIs-->
         <Button
