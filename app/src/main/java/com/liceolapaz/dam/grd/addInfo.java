@@ -52,30 +52,6 @@ public class addInfo extends AppCompatActivity {
         txtDialog="Data will be saved in database";
         titleDialog="Accept";
     }
-
-//    private void createDialog(String txtDialog, String titleDialog, Bundle savedInstanceState){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//
-//        builder.setMessage(txtDialog)
-//                .setTitle(titleDialog)
-//                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        Toast.makeText(addInfo.this, "Yes", Toast.LENGTH_SHORT).show();
-//                        dialog.cancel();
-//                    }
-//                })
-//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        Toast.makeText(addInfo.this, "No", Toast.LENGTH_SHORT).show();
-//                        dialog.cancel();
-//                    }
-//                })
-//                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        Toast.makeText(addInfo.this, "Cancel", Toast.LENGTH_SHORT).show();
-//                        dialog.cancel();
-//                    }
-//                });
-//    }
+    
 
 }
