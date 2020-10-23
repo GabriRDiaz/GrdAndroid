@@ -9,14 +9,14 @@ import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
     public final String CREATE_QUERY = "CREATE TABLE IF NOT EXISTS players(" +
-            "code INT(3) PRIMARY KEY, " +
+            "code INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
             "name VARCHAR(45) NOT NULL, " +
             "price INT(10) NOT NULL, " +
             "position VARCHAR(15) NOT NULL, " +
             "points INT(5) NOT NULL)";
 
     private Context context;
-    private static final String SELECT_QUERY = "SELECT * FROM players";
+    public static final String SELECT_QUERY = "SELECT * FROM players";
     private static final String DB_NAME = "players.db";
     public Database(Context context) {
         super(context, DB_NAME, null, 1);

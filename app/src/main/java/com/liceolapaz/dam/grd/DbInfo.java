@@ -25,13 +25,15 @@ public class DbInfo extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.playerList);
 
-       retrieveData();
+        retrieveData();
+//       Toast.makeText(this, , Toast.LENGTH_SHORT).show();
        playerInfoAdapter = new CustomAdapter(this, name, price,position,points);
        recyclerView.setAdapter(playerInfoAdapter);
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void retrieveData(){
+
         db = new Database(DbInfo.this);
         name = new ArrayList<>();
         price = new ArrayList<>();
@@ -39,17 +41,20 @@ public class DbInfo extends AppCompatActivity {
         points = new ArrayList<>();
 
         Cursor cursor = db.readData();
-        if(cursor.getCount() != 0){
-            while(cursor.moveToNext()){
-                name.add(cursor.getString(0));
-                price.add(cursor.getString(1));
-                position.add(cursor.getString(2));
-                points.add(cursor.getString(3));
-        }
-        }else{
-            Toast.makeText(this, R.string.noData, Toast.LENGTH_SHORT).show();
-    }}
 
+        if(cursor.getCount() == 0){
+                Toast.makeText(this, R.string.noData, Toast.LENGTH_SHORT).show();
+        }else{
+            while(cursor.moveToNext()){
+            name.add(cursor.getString(0));
+            price.add(cursor.getString(1));
+            position.add(cursor.getString(2));
+            points.add(cursor.getString(3));
+            }
+
+        }
+
+    }
     public void addPlayerBtn(View view) {
         Intent initAddInfo = new Intent(this, addInfo.class);
         startActivity(initAddInfo);
