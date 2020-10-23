@@ -14,4 +14,7 @@
     <string name="Price">Price:</string>
     <string name="Position">Position:</string>
     <string name="Points">Points:</string>
+    <string name="infoAdded">Info added succesfully</string>
+    <string name="infoNotAdded">Info could not be saved</string>
+    <string name="noData">There´s no available data</string>
 </resources>
