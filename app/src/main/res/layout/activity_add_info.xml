@@ -35,7 +35,12 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginLeft="60dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"ç
+                <!--android:editable is deprecated-->
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
         </TableRow>
 
         <TableRow
