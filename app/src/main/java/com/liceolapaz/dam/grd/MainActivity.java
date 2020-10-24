@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class MainActivity extends AppCompatActivity {
     private static int i=0;
     private static String queryId;
@@ -51,4 +53,8 @@ public class MainActivity extends AppCompatActivity {
     public static void setSelectQuery(String selectQuery) {
         MainActivity.selectQuery = selectQuery;
     }
+//    public void initAddInfo(){
+//        Intent initAddInfo= new Intent(this, MainActivity.class);
+//        startActivity(initAddInfo);
+//    }
 }

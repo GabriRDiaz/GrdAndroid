@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,10 +66,10 @@ public class DbInfo extends AppCompatActivity {
         startActivity(initAddInfo);
     }
     
-    public void viewPlayer(View view){
-        String pID = Integer.toString(i);
-        MainActivity.setQueryId(pID);
-        Intent initAddInfo= new Intent(this, addInfo.class);
-        startActivity(initAddInfo);
-    }
+//    public void viewPlayer(View view){
+////        Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+//        MainActivity.setQueryId("1");
+//        Intent initAddInfo= new Intent(this, addInfo.class);
+//        startActivity(initAddInfo);
+//    }
 }
