@@ -9,13 +9,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardElevation="0dp">
+        app:cardBackgroundColor="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="410dp"
-            android:layout_height="85dp"
+            android:layout_height="210dp"
             android:paddingTop="15dp">
+
 
             <TextView
                 android:id="@+id/playerName"
@@ -23,13 +23,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="PlayerName"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.169" />
+                app:layout_constraintVertical_bias="0.336"
+                />
 
             <TextView
                 android:id="@+id/playerPos"
@@ -50,7 +53,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
                 android:text="PlayerPrice"
-                app:layout_constraintEnd_toEndOf="@+id/playerName"
                 app:layout_constraintStart_toStartOf="@+id/playerName"
                 app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
@@ -58,10 +60,10 @@
                 android:id="@+id/playerPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:text="PlayerPoints"
-                app:layout_constraintEnd_toEndOf="@+id/playerPos"
                 app:layout_constraintStart_toStartOf="@+id/playerPos"
-                app:layout_constraintTop_toTopOf="@+id/playerPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/playerPos" />
 
             <TextView
                 android:id="@+id/playerId"

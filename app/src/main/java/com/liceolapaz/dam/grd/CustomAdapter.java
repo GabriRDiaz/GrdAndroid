@@ -4,10 +4,12 @@ package com.liceolapaz.dam.grd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +47,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.price.setText(String.valueOf(price.get(arrayPosition)));
         holder.position.setText(String.valueOf(position.get(arrayPosition)));
         holder.points.setText(String.valueOf(points.get(arrayPosition)));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
                 String t = String.valueOf(id.get(arrayPosition));
                 MainActivity.setQueryId(t);
