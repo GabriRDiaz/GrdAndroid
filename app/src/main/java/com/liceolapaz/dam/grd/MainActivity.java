@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 this.finish();
             }
         }else{
-            Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login succesful", Toast.LENGTH_SHORT).show();
             Intent initDbInfo = new Intent(this, DbInfo.class);
             startActivity(initDbInfo);
         }

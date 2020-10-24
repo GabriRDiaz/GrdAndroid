@@ -46,10 +46,10 @@ public class DbInfo extends AppCompatActivity {
                 Toast.makeText(this, R.string.noData, Toast.LENGTH_SHORT).show();
         }else{
             while(cursor.moveToNext()){
-            name.add(cursor.getString(0));
-            price.add(cursor.getString(1));
-            position.add(cursor.getString(2));
-            points.add(cursor.getString(3));
+            name.add(cursor.getString(1));
+            price.add(cursor.getString(2));
+            position.add(cursor.getString(3));
+            points.add(cursor.getString(4));
             }
 
         }
@@ -58,5 +58,10 @@ public class DbInfo extends AppCompatActivity {
     public void addPlayerBtn(View view) {
         Intent initAddInfo = new Intent(this, addInfo.class);
         startActivity(initAddInfo);
+    }
+    
+    public void viewPlayer(View view){
+        Intent initViewPlayerInfo= new Intent(this, ViewPlayerInfo.class);
+        startActivity(initViewPlayerInfo);
     }
 }
