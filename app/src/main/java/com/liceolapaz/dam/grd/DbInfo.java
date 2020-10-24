@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class DbInfo extends AppCompatActivity {
 
         retrieveData();
 //       Toast.makeText(this, , Toast.LENGTH_SHORT).show();
-       playerInfoAdapter = new CustomAdapter(this, name, price,position,points);
+       playerInfoAdapter = new CustomAdapter(this, id, name, price,position,points);
        recyclerView.setAdapter(playerInfoAdapter);
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -64,8 +66,8 @@ public class DbInfo extends AppCompatActivity {
     }
     
     public void viewPlayer(View view){
-        MainActivity.setQueryId(id.get(0));
-
+        String pID = Integer.toString(i);
+        MainActivity.setQueryId(pID);
         Intent initAddInfo= new Intent(this, addInfo.class);
         startActivity(initAddInfo);
     }
