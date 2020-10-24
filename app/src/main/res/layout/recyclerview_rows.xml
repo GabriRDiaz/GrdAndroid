@@ -24,7 +24,8 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cardview_bground" />
+                app:srcCompat="@drawable/cardview_bground"
+                />
 
             <TextView
                 android:id="@+id/playerName"
@@ -32,9 +33,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="142dp"
                 android:layout_marginLeft="142dp"
-                android:layout_marginTop="52dp"
-                android:text="PlayerName"
-                android:textSize="15sp"
+                android:layout_marginTop="50dp"
+                android:text="@string/playername"
+                android:textColor="@color/txtLogin"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,11 +45,13 @@
                 android:id="@+id/playerPos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="75dp"
-                android:layout_marginRight="75dp"
-                android:text="PlayerPos"
-                android:textSize="12sp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="72dp"
+                android:layout_marginRight="72dp"
+                android:text="@string/playerpos"
+                android:textColor="@color/txtLogin"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,18 +62,22 @@
                 android:layout_marginStart="142dp"
                 android:layout_marginLeft="142dp"
                 android:layout_marginTop="16dp"
-                android:text="PlayerPrice"
+                android:text="@string/playerprice"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerName" />
+                app:layout_constraintTop_toBottomOf="@+id/playerName"
+                android:textColor="@color/txtLogin"/>
 
             <TextView
                 android:id="@+id/playerPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="65dp"
-                android:layout_marginRight="65dp"
-                android:text="PlayerPoints"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginRight="55dp"
+                android:text="@string/playerpoints"
+                android:textColor="@color/txtLogin"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/playerPos" />
 

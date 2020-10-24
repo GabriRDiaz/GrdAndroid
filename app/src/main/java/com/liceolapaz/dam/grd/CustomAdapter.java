@@ -43,8 +43,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int arrayPosition) {
         holder.id.setText(String.valueOf(id.get(arrayPosition)));
-        holder.name.setText(String.valueOf(name.get(arrayPosition)));
         holder.price.setText(String.valueOf(price.get(arrayPosition)));
+        holder.position.setText(String.valueOf(position.get(arrayPosition)));
+        holder.points.setText(String.valueOf(points.get(arrayPosition)));
+
+        String nameStr = String.valueOf(name.get(arrayPosition));
+        if(nameStr.length()>6 && nameStr.contains(" ")){
+            String surName=nameStr.split(" ")[nameStr.split(" ").length-1];
+            String firstName = nameStr.substring(0, nameStr.length() - surName.length());
+            nameStr= firstName+ "\n" +surName;
+            holder.name.setSingleLine(false);
+            holder.name.setText(nameStr);
+        }else{
+            holder.name.setText(String.valueOf(name.get(arrayPosition)));
+        }
         holder.position.setText(String.valueOf(position.get(arrayPosition)));
         holder.points.setText(String.valueOf(points.get(arrayPosition)));
         holder.itemView.setOnClickListener(new View.OnClickListener(){
