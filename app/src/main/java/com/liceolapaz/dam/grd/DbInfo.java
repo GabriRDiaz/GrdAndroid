@@ -15,8 +15,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.liceolapaz.dam.grd.R.drawable.card_view_bg;
-
 public class DbInfo extends AppCompatActivity {
 
     RecyclerView recyclerView;
