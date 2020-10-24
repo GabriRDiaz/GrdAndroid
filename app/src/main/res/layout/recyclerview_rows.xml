@@ -7,19 +7,19 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="382dp"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/cviewBg"
-                android:layout_width="wrap_content"
-                android:layout_height="250dp"
+                android:layout_width="354dp"
+                android:layout_height="236dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,38 +30,36 @@
                 android:id="@+id/playerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="164dp"
-                android:layout_marginLeft="164dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginStart="142dp"
+                android:layout_marginLeft="142dp"
+                android:layout_marginTop="52dp"
                 android:text="PlayerName"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.181" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/playerPos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="65dp"
-                android:layout_marginRight="65dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="75dp"
+                android:layout_marginRight="75dp"
                 android:text="PlayerPos"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.662"
-                app:layout_constraintStart_toEndOf="@+id/playerName"
-                app:layout_constraintTop_toTopOf="@+id/playerName" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/playerPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="142dp"
+                android:layout_marginLeft="142dp"
                 android:layout_marginTop="16dp"
                 android:text="PlayerPrice"
-                app:layout_constraintStart_toStartOf="@+id/playerName"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
             <TextView
@@ -69,8 +67,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginRight="65dp"
                 android:text="PlayerPoints"
-                app:layout_constraintStart_toStartOf="@+id/playerPos"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/playerPos" />
 
             <TextView
@@ -79,9 +79,8 @@
                 android:layout_height="19dp"
                 android:text=""
                 android:textColor="@android:color/transparent"
-                app:layout_constraintEnd_toStartOf="@+id/playerPos"
-                app:layout_constraintStart_toEndOf="@+id/playerName"
-                app:layout_constraintTop_toTopOf="@+id/playerPos" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
