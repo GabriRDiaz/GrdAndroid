@@ -100,7 +100,7 @@
                 android:text="@string/Position" />
 
             <Spinner
-                android:id="@+id/addposition"
+                android:id="@+id/addPosition"
                 android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"

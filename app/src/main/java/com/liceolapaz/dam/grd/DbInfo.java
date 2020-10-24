@@ -16,8 +16,9 @@ public class DbInfo extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Database db;
-    ArrayList<String> name, price, position, points;
+    ArrayList<String>id, name, price, position, points;
     CustomAdapter playerInfoAdapter;
+    Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +34,21 @@ public class DbInfo extends AppCompatActivity {
     }
 
     private void retrieveData(){
-
+        MainActivity.setSelectQuery("SELECT * FROM players");
         db = new Database(DbInfo.this);
+        id = new ArrayList<>();
         name = new ArrayList<>();
         price = new ArrayList<>();
         position = new ArrayList<>();
         points = new ArrayList<>();
 
-        Cursor cursor = db.readData();
+        cursor = db.readData();
 
         if(cursor.getCount() == 0){
                 Toast.makeText(this, R.string.noData, Toast.LENGTH_SHORT).show();
         }else{
             while(cursor.moveToNext()){
+            id.add(cursor.getString(0));
             name.add(cursor.getString(1));
             price.add(cursor.getString(2));
             position.add(cursor.getString(3));
@@ -61,7 +64,9 @@ public class DbInfo extends AppCompatActivity {
     }
     
     public void viewPlayer(View view){
-        Intent initViewPlayerInfo= new Intent(this, ViewPlayerInfo.class);
-        startActivity(initViewPlayerInfo);
+        MainActivity.setQueryId(id.get(0));
+
+        Intent initAddInfo= new Intent(this, addInfo.class);
+        startActivity(initAddInfo);
     }
 }

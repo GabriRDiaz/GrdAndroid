@@ -16,7 +16,6 @@ public class Database extends SQLiteOpenHelper {
             "points INT(5) NOT NULL)";
 
     private Context context;
-    public static final String SELECT_QUERY = "SELECT * FROM players";
     private static final String DB_NAME = "players.db";
     public Database(Context context) {
         super(context, DB_NAME, null, 1);
@@ -62,8 +61,9 @@ public class Database extends SQLiteOpenHelper {
 
        Cursor cursor = null;
        if(db!=null){
-           cursor=db.rawQuery(SELECT_QUERY, null);
+           cursor=db.rawQuery(MainActivity.getSelectQuery(), null);
        }
        return cursor;
     }
+
 }

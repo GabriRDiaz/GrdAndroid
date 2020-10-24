@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static int i=0;
+    private static String queryId;
+    public static String selectQuery;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +34,21 @@ public class MainActivity extends AppCompatActivity {
             Intent initDbInfo = new Intent(this, DbInfo.class);
             startActivity(initDbInfo);
         }
+    }
+
+    public static void setQueryId(String queryId) {
+        MainActivity.queryId = queryId;
+    }
+
+    public static String getQueryId() {
+        return queryId;
+    }
+
+    public static String getSelectQuery() {
+        return selectQuery;
+    }
+
+    public static void setSelectQuery(String selectQuery) {
+        MainActivity.selectQuery = selectQuery;
     }
 }
