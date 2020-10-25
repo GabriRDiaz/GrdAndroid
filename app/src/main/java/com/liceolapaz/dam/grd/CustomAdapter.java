@@ -32,7 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.price = price;
         this.position = position;
         this.points = points;
-        //
+        //Swap
     }
     @NonNull
     @Override
