@@ -26,6 +26,11 @@ public class addInfo extends AppCompatActivity {
     private ArrayList<String> priceA = new ArrayList<>();
     //private ArrayList<String> positionA = new ArrayList<>();
     private ArrayList<String> pointsA = new ArrayList<>();
+    TextView id;
+    TextView name;
+    TextView price;
+    //Spinner position;
+    TextView points;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +48,21 @@ public class addInfo extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item);
 
         addPos.setAdapter(adapter);
-        setValues();
-    }
 
+        if(!MainActivity.add) {
+            setValues();
+        }else{
+            clearValues();
+            MainActivity.add = false;
+        }
+    }
+    public void clearValues() {
+        fview();
+        id.setText("");
+        name.setText("");
+        price.setText("");
+        points.setText("");
+    }
     public void cancelAddInfo(View view) {
         txtDialog="Data will be discarted";
         titleDialog="Cancel";
@@ -90,11 +107,7 @@ public class addInfo extends AppCompatActivity {
     }
 
     public void setValues() {
-        TextView id = findViewById(R.id.addId);
-        TextView name = findViewById(R.id.addName);
-        TextView price = findViewById(R.id.addPrice);
-//      Spinner position = findViewById(R.id.addPosition);
-        TextView points = findViewById(R.id.addPoints);
+        fview();
 
         MainActivity.setSelectQuery("SELECT * FROM players WHERE code=" + MainActivity.getQueryId());
         Database db = new Database(addInfo.this);
@@ -122,5 +135,12 @@ public class addInfo extends AppCompatActivity {
 //        position.setSelection(options.indexOf(value));
 //        points.setText(pointsA.add(cursor.getString(4)));
         }
+    }
+    private void fview(){
+        id = findViewById(R.id.addId);
+        name = findViewById(R.id.addName);
+        price = findViewById(R.id.addPrice);
+        //Spinner position = findViewById(R.id.addPosition);
+        points = findViewById(R.id.addPoints);
     }
 }

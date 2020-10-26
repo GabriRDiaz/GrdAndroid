@@ -62,6 +62,7 @@ public class DbInfo extends AppCompatActivity {
 
     }
     public void addPlayerBtn(View view) {
+        MainActivity.add = true;
         Intent initAddInfo = new Intent(this, addInfo.class);
         startActivity(initAddInfo);
     }
