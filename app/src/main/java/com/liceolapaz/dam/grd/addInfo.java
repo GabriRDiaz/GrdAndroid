@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,8 @@ public class addInfo extends AppCompatActivity {
     private String titleDialog;
     private ArrayList<String> idA = new ArrayList<>();
     private boolean upd; //True->Upd | False->Add
+    private int optionDial; //0->Cancel 1->Accept 2->Delete
+    Button but;
     TextView id;
     TextView name;
     TextView price;
@@ -46,12 +49,14 @@ public class addInfo extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item);
 
         addPos.setAdapter(adapter);
-
+        but = findViewById(R.id.delete);
         if(!MainActivity.add) {
             setValues();
+            but.setVisibility(View.VISIBLE);
             upd = true;
         }else{
             clearValues();
+            but.setVisibility(View.GONE);
             upd = false;
         }
     }
