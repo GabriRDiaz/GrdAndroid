@@ -12,7 +12,7 @@ import android.widget.Toast;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class MainActivity extends AppCompatActivity {
-    public static boolean add;
+    public static boolean add; // true --> AddInfo | false --> UpdateInfo
     private static int i=0;
     private static String queryId;
     public static String selectQuery;

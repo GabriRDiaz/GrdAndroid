@@ -61,40 +61,72 @@ public class addInfo extends AppCompatActivity {
         addPos.setSelection(0);
         points.setText("");
     }
+    private void checkBuilder(){
+        if(MainActivity.add){
+            createDialogAdd(txtDialog, titleDialog);
+        }else{
+            createDialogUpd(txtDialog, titleDialog);
+        }
+    }
     public void cancelAddInfo(View view) {
         txtDialog="Data will be discarted";
         titleDialog="Cancel";
-        createDialog(txtDialog, titleDialog);
+        checkBuilder();
     }
 
     public void deleteInfo(View view) {
         txtDialog="Data will be removed from database";
         titleDialog="Delete";
-        createDialog(txtDialog, titleDialog);
+        checkBuilder();
     }
 
     public void acceptAddInfo(View view) {
         txtDialog="Data will be saved in database";
         titleDialog="Accept";
-        createDialog(txtDialog, titleDialog);
+        checkBuilder();
     }
-    private void createDialog(String txtDialog, String titleDialog){
+    private void createDialogUpd(String txtDialog, String titleDialog){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(titleDialog);
         builder.setMessage(txtDialog);
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "Accept", Toast.LENGTH_SHORT).show();
+                Toast.makeText(addInfo.this, "AcceptUpd", Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "Neutral", Toast.LENGTH_SHORT).show();
+                Toast.makeText(addInfo.this, "NeutralUpd", Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(addInfo.this, "DenyUpd", Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private void createDialogAdd(String txtDialog, String titleDialog){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(titleDialog);
+        builder.setMessage(txtDialog);
+        builder.setPositiveButton("AcceptAdd", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(addInfo.this, "Accept", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNeutralButton("CancelAdd", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(addInfo.this, "Neutral", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("NoAdd", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(addInfo.this, "Deny", Toast.LENGTH_SHORT).show();
@@ -103,6 +135,7 @@ public class addInfo extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 
     public void setValues() {
         fview();
@@ -125,11 +158,6 @@ public class addInfo extends AppCompatActivity {
             name.setText(idA.get(1));
             price.setText(idA.get(2));
             addPos.setSelection(getSpinnerInfo());
-//            Toast.makeText(this, Arrays.asList(DATA).indexOf("MF"), Toast.LENGTH_SHORT).show();
-//            position.setSelection(DATA.indexOf(idA.get(3)));
-//            position.setSelection(DATA.indexOf(getSpinnerInfo();));
-//            position.setSelection(DATA.indexOf(idA.get(3)));
-//            position.setSelection(idA.get(3));
             points.setText(idA.get(4));
 
         }
