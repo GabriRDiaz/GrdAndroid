@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -22,15 +24,13 @@ public class addInfo extends AppCompatActivity {
     private String txtDialog;
     private String titleDialog;
     private ArrayList<String> idA = new ArrayList<>();
-    private ArrayList<String> nameA = new ArrayList<>();
-    private ArrayList<String> priceA = new ArrayList<>();
-    //private ArrayList<String> positionA = new ArrayList<>();
-    private ArrayList<String> pointsA = new ArrayList<>();
     TextView id;
     TextView name;
     TextView price;
-    //Spinner position;
     TextView points;
+    final String[] DATA =
+            {"FW","MF", "DF","GK"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +38,9 @@ public class addInfo extends AppCompatActivity {
 
         addPos = (Spinner)findViewById(R.id.addPosition);
 
-        final String[] data =
-                new String[]{"Forward (FW)","Midfielder (MF)","Defender (DF)","Goalkeeper (GK)"};
-
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, data);
+                        android.R.layout.simple_spinner_item, DATA);
         adapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
 
@@ -61,6 +58,7 @@ public class addInfo extends AppCompatActivity {
         id.setText("");
         name.setText("");
         price.setText("");
+        addPos.setSelection(0);
         points.setText("");
     }
     public void cancelAddInfo(View view) {
@@ -121,19 +119,19 @@ public class addInfo extends AppCompatActivity {
                 idA.add(cursor.getString(2));
                 idA.add(cursor.getString(3));
                 idA.add(cursor.getString(4));
-//                nameA.add(cursor.getString(1));
-//                priceA.add(cursor.getString(2));
-//              positionA.add(cursor.getString(3));
-//                pointsA.add(cursor.getString(4));
+
             }
             id.setText(idA.get(0));
             name.setText(idA.get(1));
             price.setText(idA.get(2));
+            addPos.setSelection(getSpinnerInfo());
+//            Toast.makeText(this, Arrays.asList(DATA).indexOf("MF"), Toast.LENGTH_SHORT).show();
+//            position.setSelection(DATA.indexOf(idA.get(3)));
+//            position.setSelection(DATA.indexOf(getSpinnerInfo();));
+//            position.setSelection(DATA.indexOf(idA.get(3)));
+//            position.setSelection(idA.get(3));
             points.setText(idA.get(4));
-//        name.setText(nameA.add(cursor.getString(1)));
-//        price.setText(priceA.add(cursor.getString(2)));
-//        position.setSelection(options.indexOf(value));
-//        points.setText(pointsA.add(cursor.getString(4)));
+
         }
     }
     private void fview(){
@@ -142,5 +140,14 @@ public class addInfo extends AppCompatActivity {
         price = findViewById(R.id.addPrice);
         //Spinner position = findViewById(R.id.addPosition);
         points = findViewById(R.id.addPoints);
+    }
+    private int getSpinnerInfo(){
+        for(int i=0; i<4; i++){
+           if(DATA[i].equals(idA.get(3))){
+//                Toast.makeText(this, ""+idA.get(i), Toast.LENGTH_SHORT).show();
+                return i;
+            }
+        }
+        return 1;
     }
 }
