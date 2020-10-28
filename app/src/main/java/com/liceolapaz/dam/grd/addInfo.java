@@ -41,25 +41,12 @@ public class addInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_info);
-
         Intent in = getIntent();
 
         Bundle b = in.getExtras();
-
-        add = b.getByte("isFromAddButton");
-        Toast.makeText(this, ""+add, Toast.LENGTH_SHORT).show();
-        addPos = (Spinner)findViewById(R.id.addPosition);
-
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, DATA);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
-        addPos.setAdapter(adapter);
-        but = findViewById(R.id.delete);
-
+        changeMenuView(b);
     }
+
     public void clearValues() {
         fview();
         id.setText("");
@@ -72,18 +59,31 @@ public class addInfo extends AppCompatActivity {
     public void cancelAddInfo(View view) {
         txtDialog="Data will be discarted";
         titleDialog="Cancel";
-
+        if(add==1){
+            Toast.makeText(this, "CancelAdd", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "CancelUpd", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void deleteInfo(View view) {
         txtDialog="Data will be removed from database";
         titleDialog="Delete";
-
+        if(add==1){
+            Toast.makeText(this, "DeleteAdd", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "DeleteUpd", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void acceptAddInfo(View view) {
         txtDialog="Data will be saved in database";
         titleDialog="Accept";
+        if(add==1){
+            Toast.makeText(this, "AcceptAdd", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "AcceptUpd", Toast.LENGTH_SHORT).show();
+        }
 
     }
     private void createDialogUpd(String txtDialog, String titleDialog){
@@ -137,9 +137,26 @@ public class addInfo extends AppCompatActivity {
         dialog.show();
     }
 
+    private void changeMenuView(Bundle b){
+        but = findViewById(R.id.delete);
+        add = b.getByte("isFromAddButton");
+        if(add==0){
+            setValues();
+            but.setVisibility(View.GONE);
+        }else{
+            clearValues();
+            but.setVisibility(View.VISIBLE);
+        }
+    }
     public void setValues() {
         fview();
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_item, DATA);
+        adapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
 
+        addPos.setAdapter(adapter);
         MainActivity.setSelectQuery("SELECT * FROM players WHERE code=" + MainActivity.getQueryId());
         Database db = new Database(addInfo.this);
         Cursor cursor = db.readData();
@@ -166,7 +183,7 @@ public class addInfo extends AppCompatActivity {
         id = findViewById(R.id.addId);
         name = findViewById(R.id.addName);
         price = findViewById(R.id.addPrice);
-        //Spinner position = findViewById(R.id.addPosition);
+        addPos = (Spinner)findViewById(R.id.addPosition);
         points = findViewById(R.id.addPoints);
     }
     private int getSpinnerInfo(){
