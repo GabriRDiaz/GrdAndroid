@@ -12,8 +12,6 @@ import android.widget.Toast;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class MainActivity extends AppCompatActivity {
-    public static boolean add; // true --> AddInfo | false --> ViewInfo
-    public static boolean upd; //True->Upd | False->Add
     private static int i=0;
     private static String queryId;
     public static String selectQuery;
@@ -54,14 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setSelectQuery(String selectQuery) {
         MainActivity.selectQuery = selectQuery;
-    }
-
-    public static boolean isUpd() {
-        return upd;
-    }
-
-    public static void setUpd(boolean upd) {
-        MainActivity.upd = upd;
     }
 
 //    public void initAddInfo(){

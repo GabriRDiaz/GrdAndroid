@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +65,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             @Override public void onClick(View v) {
                 String t = String.valueOf(id.get(arrayPosition));
                 MainActivity.setQueryId(t);
+                Bundle bundle = new Bundle();
+                bundle.putByte("isFromAddButton", (byte)0);
                 Intent initAddInfo= new Intent(context, addInfo.class);
+                initAddInfo.putExtras(bundle);
                 initAddInfo.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(initAddInfo);
             }

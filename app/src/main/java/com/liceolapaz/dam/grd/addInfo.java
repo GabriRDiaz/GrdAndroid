@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -27,12 +28,12 @@ public class addInfo extends AppCompatActivity {
     private String txtDialog;
     private String titleDialog;
     private ArrayList<String> idA = new ArrayList<>();
-    private int optionDial; //0->Cancel 1->Accept 2->Delete
     Button but;
     TextView id;
     TextView name;
     TextView price;
     TextView points;
+    byte add;
     final String[] DATA =
             {"FW","MF", "DF","GK"};
 
@@ -41,6 +42,12 @@ public class addInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_info);
 
+        Intent in = getIntent();
+
+        Bundle b = in.getExtras();
+
+        add = b.getByte("isFromAddButton");
+        Toast.makeText(this, ""+add, Toast.LENGTH_SHORT).show();
         addPos = (Spinner)findViewById(R.id.addPosition);
 
         ArrayAdapter<String> adapter =
@@ -51,15 +58,7 @@ public class addInfo extends AppCompatActivity {
 
         addPos.setAdapter(adapter);
         but = findViewById(R.id.delete);
-        if(!MainActivity.add) {
-            setValues();
-            but.setVisibility(View.VISIBLE);
-            MainActivity.setUpd(true);
-        }else{
-            clearValues();
-            but.setVisibility(View.GONE);
-            MainActivity.setUpd(false);
-        }
+
     }
     public void clearValues() {
         fview();
@@ -69,29 +68,23 @@ public class addInfo extends AppCompatActivity {
         addPos.setSelection(0);
         points.setText("");
     }
-    private void checkBuilder(){
-        if(MainActivity.isUpd()==false){
-            createDialogAdd(txtDialog, titleDialog);
-        }else{
-            createDialogUpd(txtDialog, titleDialog);
-        }
-    }
+
     public void cancelAddInfo(View view) {
         txtDialog="Data will be discarted";
         titleDialog="Cancel";
-        checkBuilder();
+
     }
 
     public void deleteInfo(View view) {
         txtDialog="Data will be removed from database";
         titleDialog="Delete";
-        checkBuilder();
+
     }
 
     public void acceptAddInfo(View view) {
         txtDialog="Data will be saved in database";
         titleDialog="Accept";
-        checkBuilder();
+
     }
     private void createDialogUpd(String txtDialog, String titleDialog){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -119,19 +112,13 @@ public class addInfo extends AppCompatActivity {
         dialog.show();
     }
     private void createDialogAdd(String txtDialog, String titleDialog){
-        Toast.makeText(this, "DIALOG ADD", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, ""+MainActivity.isUpd(), Toast.LENGTH_SHORT).show();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(titleDialog);
         builder.setMessage(txtDialog);
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(MainActivity.isUpd()==false){
-                    addInfoDb();
-                }else{
-                    clearValues();
-                }
+
             }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
