@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -124,7 +126,7 @@ public class addInfo extends AppCompatActivity {
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "AcceptAdd", Toast.LENGTH_SHORT).show();
+               addInfoDb();
             }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -142,7 +144,6 @@ public class addInfo extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 
     public void setValues() {
         fview();
@@ -184,5 +185,10 @@ public class addInfo extends AppCompatActivity {
             }
         }
         return 1;
+    }
+    private void addInfoDb(){
+        Database dbase = new Database(this);
+        SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
+        dbase.addPlayer(dbaseSQL, name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
     }
 }

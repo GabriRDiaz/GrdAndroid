@@ -39,22 +39,21 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_QUERY);
     }
 
-//    public void addPlayer(SQLiteDatabase db, String name, int price, String position, int points){
-//        db = this.getWritableDatabase();
-//        ContentValues cv = new ContentValues();
-//
-//        cv.put("name",name);
-//        cv.put("price",price);
-//        cv.put("position",position);
-//        cv.put("points",points);
-//
-//        long result = db.insert("players", null, cv);
-//        if(result!=-1){
-//            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();
-//        }else{
-//            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();;
-//        }
-//    }
+    public void addPlayer(SQLiteDatabase dbaseSQL, String name, String price, String position, String points){
+        ContentValues cv = new ContentValues();
+
+        cv.put("name",name);
+        cv.put("price",Integer.parseInt(price));
+        cv.put("position",position);
+        cv.put("points",Integer.parseInt(points));
+
+        long result = dbaseSQL.insert("players", null, cv);
+        if(result!=-1){
+            Toast.makeText(context, R.string.infoAdded, Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();;
+        }
+    }
 
     public Cursor readData(){
        SQLiteDatabase db = this.getReadableDatabase();
