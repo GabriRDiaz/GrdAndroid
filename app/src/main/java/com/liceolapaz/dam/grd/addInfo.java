@@ -34,6 +34,7 @@ public class addInfo extends AppCompatActivity {
     TextView price;
     TextView points;
     byte add;
+    byte dialOption; //0-->Delete || 1-->Accept || 2-->Cancel
     final String[] DATA =
             {"FW","MF", "DF","GK"};
 
@@ -41,8 +42,8 @@ public class addInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_info);
+        loadComponents();
         Intent in = getIntent();
-
         Bundle b = in.getExtras();
         changeMenuView(b);
     }
@@ -59,30 +60,33 @@ public class addInfo extends AppCompatActivity {
     public void cancelAddInfo(View view) {
         txtDialog="Data will be discarted";
         titleDialog="Cancel";
+        dialOption=2;
         if(add==1){
-            Toast.makeText(this, "CancelAdd", Toast.LENGTH_SHORT).show();
+            createDialogAdd(txtDialog,titleDialog);
         }else{
-            Toast.makeText(this, "CancelUpd", Toast.LENGTH_SHORT).show();
+            createDialogUpd(txtDialog,titleDialog);
         }
     }
 
     public void deleteInfo(View view) {
         txtDialog="Data will be removed from database";
         titleDialog="Delete";
+        dialOption=0;
         if(add==1){
-            Toast.makeText(this, "DeleteAdd", Toast.LENGTH_SHORT).show();
+            createDialogAdd(txtDialog,titleDialog);
         }else{
-            Toast.makeText(this, "DeleteUpd", Toast.LENGTH_SHORT).show();
+            createDialogUpd(txtDialog,titleDialog);
         }
     }
 
     public void acceptAddInfo(View view) {
         txtDialog="Data will be saved in database";
         titleDialog="Accept";
+        dialOption=1;
         if(add==1){
-            Toast.makeText(this, "AcceptAdd", Toast.LENGTH_SHORT).show();
+            createDialogAdd(txtDialog,titleDialog);
         }else{
-            Toast.makeText(this, "AcceptUpd", Toast.LENGTH_SHORT).show();
+            createDialogUpd(txtDialog,titleDialog);
         }
 
     }
@@ -93,20 +97,38 @@ public class addInfo extends AppCompatActivity {
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "AcceptUpd", Toast.LENGTH_SHORT).show();
+                if(dialOption==0){
+                    Toast.makeText(addInfo.this, "Button delete", Toast.LENGTH_SHORT).show();
+                }else if(dialOption==1){
+                    Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "NeutralUpd", Toast.LENGTH_SHORT).show();
+                if(dialOption==0){
+                    Toast.makeText(addInfo.this, "Button delete", Toast.LENGTH_SHORT).show();
+                }else if(dialOption==1){
+                    Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "DenyUpd", Toast.LENGTH_SHORT).show();
+            if(dialOption==0){
+                Toast.makeText(addInfo.this, "Button delete", Toast.LENGTH_SHORT).show();
+            }else if(dialOption==1){
+                Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
             }
+        }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -119,18 +141,32 @@ public class addInfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-            }
+                if(dialOption==1){
+                    addInfoDb();
+                }else{
+                    clearValues();
+                   finish();
+                }
+        }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                if(dialOption==1){
+                    dialog.dismiss();
+                }else{
+                    dialog.dismiss();
+                }
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                if(dialOption==1){
+                    dialog.dismiss();
+                }else{
+                    dialog.dismiss();
+                }
             }
         });
         AlertDialog dialog = builder.create();
@@ -142,21 +178,13 @@ public class addInfo extends AppCompatActivity {
         add = b.getByte("isFromAddButton");
         if(add==0){
             setValues();
-            but.setVisibility(View.GONE);
-        }else{
-            clearValues();
             but.setVisibility(View.VISIBLE);
+        }else{
+//            clearValues();
+            but.setVisibility(View.GONE);
         }
     }
     public void setValues() {
-        fview();
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, DATA);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
-        addPos.setAdapter(adapter);
         MainActivity.setSelectQuery("SELECT * FROM players WHERE code=" + MainActivity.getQueryId());
         Database db = new Database(addInfo.this);
         Cursor cursor = db.readData();
@@ -199,5 +227,17 @@ public class addInfo extends AppCompatActivity {
         Database dbase = new Database(this);
         SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
         dbase.addPlayer(dbaseSQL, name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
+        clearValues();
+        finish();
+    }
+    private void loadComponents(){
+        fview();
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_item, DATA);
+        adapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+
+        addPos.setAdapter(adapter);
     }
 }
