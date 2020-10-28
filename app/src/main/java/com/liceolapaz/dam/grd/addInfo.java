@@ -27,7 +27,6 @@ public class addInfo extends AppCompatActivity {
     private String txtDialog;
     private String titleDialog;
     private ArrayList<String> idA = new ArrayList<>();
-    private boolean upd; //True->Upd | False->Add
     private int optionDial; //0->Cancel 1->Accept 2->Delete
     Button but;
     TextView id;
@@ -55,11 +54,11 @@ public class addInfo extends AppCompatActivity {
         if(!MainActivity.add) {
             setValues();
             but.setVisibility(View.VISIBLE);
-            upd = true;
+            MainActivity.setUpd(true);
         }else{
             clearValues();
             but.setVisibility(View.GONE);
-            upd = false;
+            MainActivity.setUpd(false);
         }
     }
     public void clearValues() {
@@ -71,7 +70,7 @@ public class addInfo extends AppCompatActivity {
         points.setText("");
     }
     private void checkBuilder(){
-        if(!upd){
+        if(MainActivity.isUpd()==false){
             createDialogAdd(txtDialog, titleDialog);
         }else{
             createDialogUpd(txtDialog, titleDialog);
@@ -120,25 +119,31 @@ public class addInfo extends AppCompatActivity {
         dialog.show();
     }
     private void createDialogAdd(String txtDialog, String titleDialog){
+        Toast.makeText(this, "DIALOG ADD", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+MainActivity.isUpd(), Toast.LENGTH_SHORT).show();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(titleDialog);
         builder.setMessage(txtDialog);
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               addInfoDb();
+                if(MainActivity.isUpd()==false){
+                    addInfoDb();
+                }else{
+                    clearValues();
+                }
             }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "NeutralAdd", Toast.LENGTH_SHORT).show();
+
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(addInfo.this, "DenyAdd", Toast.LENGTH_SHORT).show();
+
             }
         });
         AlertDialog dialog = builder.create();
