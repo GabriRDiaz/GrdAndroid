@@ -106,31 +106,27 @@ public class addInfo extends AppCompatActivity {
                     }
                     updInfoDB();
                 }else{
-                    Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
+                    gotoDbInfoRefresh();
                 }
             }
         });
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(dialOption==0){
-                    Toast.makeText(addInfo.this, "Button delete", Toast.LENGTH_SHORT).show();
-                }else if(dialOption==1){
-                    Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
+        if(dialOption == 0 ||dialOption==1){
+            builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                       dialog.dismiss();
                 }
-            }
-        });
+            });
+        }
+
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            if(dialOption==0){
-                Toast.makeText(addInfo.this, "Button delete", Toast.LENGTH_SHORT).show();
-            }else if(dialOption==1){
-                Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
+            if(dialOption==0 || dialOption ==1){
+                gotoDbInfoRefresh();
+            }
+            else{
+                dialog.dismiss();
             }
         }
         });
@@ -157,16 +153,15 @@ public class addInfo extends AppCompatActivity {
                 }
         }
         });
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(dialOption==1){
+        if(dialOption==1) {
+            builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
-                }else{
-                    dialog.dismiss();
+
                 }
-            }
-        });
+            });
+        }
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -237,24 +232,21 @@ public class addInfo extends AppCompatActivity {
         SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
         dbase.addPlayer(dbaseSQL, name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
         clearValues();
-        Intent initDbInfo = new Intent(this, DbInfo.class);
-        startActivity(initDbInfo);
+        gotoDbInfoRefresh();
     }
     private void delInfoDB(){
         Database dbase = new Database(this);
         SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
         dbase.delPlayer(dbaseSQL,id.getText().toString());
         clearValues();
-        Intent initDbInfo = new Intent(this, DbInfo.class);
-        startActivity(initDbInfo);
+        gotoDbInfoRefresh();
     }
     private void updInfoDB(){
         Database dbase = new Database(this);
         SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
         dbase.updPlayer(dbaseSQL, id.getText().toString(),name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
         clearValues();
-        Intent initDbInfo = new Intent(this, DbInfo.class);
-        startActivity(initDbInfo);
+        gotoDbInfoRefresh();
     }
 
     private void loadComponents(){
@@ -266,5 +258,9 @@ public class addInfo extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item);
 
         addPos.setAdapter(adapter);
+    }
+    private void gotoDbInfoRefresh(){
+        Intent initDbInfo = new Intent(this, DbInfo.class);
+        startActivity(initDbInfo);
     }
 }
