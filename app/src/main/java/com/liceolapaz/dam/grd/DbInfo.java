@@ -22,6 +22,7 @@ public class DbInfo extends AppCompatActivity {
     ArrayList<String>id, name, price, position, points;
     CustomAdapter playerInfoAdapter;
     Cursor cursor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class DbInfo extends AppCompatActivity {
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void retrieveData(){
+    public void retrieveData(){
         MainActivity.setSelectQuery("SELECT * FROM players");
         db = new Database(DbInfo.this);
         id = new ArrayList<>();

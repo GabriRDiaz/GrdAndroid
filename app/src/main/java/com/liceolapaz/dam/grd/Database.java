@@ -25,14 +25,13 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_QUERY);
-        String insertExampleInfo = "INSERT INTO players(name, price, position, points)\n" +
-                "VALUES(\"Iniesta\", 999999, \"MF\", 999999),\n" +
-                "(\"Nolito\", 555555, \"FW\", 555555),\n" +
-                "(\"Sergio Gramos\", 666666, \"DF\", 3),\n" +
-                "(\"Joao Simoes\", 1000000, \"Colhoes\", 1000000);";
-        db.execSQL(insertExampleInfo);
+//        String insertExampleInfo = "INSERT INTO players(name, price, position, points)\n" +
+//                "VALUES(\"Iniesta\", 999999, \"MF\", 999999),\n" +
+//                "(\"Nolito\", 555555, \"FW\", 555555),\n" +
+//                "(\"Sergio Gramos\", 666666, \"DF\", 3),\n" +
+//                "(\"Joao Simoes\", 1000000, \"Colhoes\", 1000000);";
+//        db.execSQL(insertExampleInfo);
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS players");

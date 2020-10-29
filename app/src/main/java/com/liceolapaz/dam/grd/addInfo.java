@@ -142,10 +142,14 @@ public class addInfo extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 if(dialOption==1){
+                    if(name.getText().toString().equals("") || price.getText().toString().equals("") || points.getText().toString().equals("")){
+                        Toast.makeText(addInfo.this, "Fill all the fields", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     addInfoDb();
                 }else{
                     clearValues();
-                   finish();
+                    finish();
                 }
         }
         });
@@ -163,7 +167,8 @@ public class addInfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(dialOption==1){
-                    dialog.dismiss();
+                    clearValues();
+                    finish();
                 }else{
                     dialog.dismiss();
                 }
@@ -224,11 +229,13 @@ public class addInfo extends AppCompatActivity {
         return 1;
     }
     private void addInfoDb(){
+        Toast.makeText(this, "Entra", Toast.LENGTH_SHORT).show();
         Database dbase = new Database(this);
         SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
         dbase.addPlayer(dbaseSQL, name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
         clearValues();
-        finish();
+        Intent initDbInfo = new Intent(this, DbInfo.class);
+        startActivity(initDbInfo);
     }
     private void loadComponents(){
         fview();
