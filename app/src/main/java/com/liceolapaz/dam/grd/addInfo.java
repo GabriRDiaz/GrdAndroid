@@ -184,7 +184,6 @@ public class addInfo extends AppCompatActivity {
             setValues();
             but.setVisibility(View.VISIBLE);
         }else{
-//            clearValues();
             but.setVisibility(View.GONE);
         }
     }
@@ -221,7 +220,6 @@ public class addInfo extends AppCompatActivity {
     private int getSpinnerInfo(){
         for(int i=0; i<4; i++){
            if(DATA[i].equals(idA.get(3))){
-//                Toast.makeText(this, ""+idA.get(i), Toast.LENGTH_SHORT).show();
                 return i;
             }
         }
@@ -251,12 +249,8 @@ public class addInfo extends AppCompatActivity {
 
     private void loadComponents(){
         fview();
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, DATA);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DATA);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addPos.setAdapter(adapter);
     }
     private void gotoDbInfoRefresh(){

@@ -26,6 +26,7 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_QUERY);
+//        TEST INFO. UNCOMMENT FOR REGISTERS
 //        String insertExampleInfo = "INSERT INTO players(name, price, position, points)\n" +
 //                "VALUES(\"Iniesta\", 999999, \"MF\", 999999),\n" +
 //                "(\"Nolito\", 555555, \"FW\", 555555),\n" +
@@ -51,7 +52,7 @@ public class Database extends SQLiteOpenHelper {
         if(result!=-1){
             Toast.makeText(context, R.string.infoAdded, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();;
+            Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();
         }
     }
     public void delPlayer(SQLiteDatabase dbaseSQL, String id){
@@ -59,7 +60,6 @@ public class Database extends SQLiteOpenHelper {
     }
     public void updPlayer(SQLiteDatabase dbaseSQL, String id, String name, String price, String position, String points){
         ContentValues cv = new ContentValues();
-//        cv.put("code", Integer.parseInt(id));
         cv.put("name",name);
         cv.put("price",Integer.parseInt(price));
         cv.put("position",position);
@@ -67,9 +67,9 @@ public class Database extends SQLiteOpenHelper {
         dbaseSQL.update(TABLE_NAME, cv, "code="+Integer.parseInt(id), null);
     }
     public long countPlayers(SQLiteDatabase dbaseSQL){
-        long count = DatabaseUtils.queryNumEntries(dbaseSQL, TABLE_NAME);
-        return count;
-    }
+         long count = DatabaseUtils.queryNumEntries(dbaseSQL, TABLE_NAME);
+         return count;
+     }
     public Cursor readData(){
        SQLiteDatabase db = this.getReadableDatabase();
 

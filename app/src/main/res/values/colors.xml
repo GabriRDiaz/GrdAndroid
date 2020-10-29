@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#137C17</color>
     <color name="colorAccent">#32FFEB</color>
     <color name="txtLogin">#ffffff</color>>
+    <color name="cvColor">#37000000</color>
+
 </resources>

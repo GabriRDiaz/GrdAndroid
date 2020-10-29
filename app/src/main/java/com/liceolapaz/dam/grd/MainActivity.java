@@ -54,8 +54,4 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.selectQuery = selectQuery;
     }
 
-//    public void initAddInfo(){
-//        Intent initAddInfo= new Intent(this, MainActivity.class);
-//        startActivity(initAddInfo);
-//    }
 }
