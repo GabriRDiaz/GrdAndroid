@@ -50,15 +50,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.points.setText(String.valueOf(points.get(arrayPosition)));
 
         String nameStr = String.valueOf(name.get(arrayPosition));
-        if(nameStr.length()>6 && nameStr.contains(" ")){
-            String surName=nameStr.split(" ")[nameStr.split(" ").length-1];
-            String firstName = nameStr.substring(0, nameStr.length() - surName.length());
-            nameStr= firstName+ "\n" +surName;
-            holder.name.setSingleLine(false);
-            holder.name.setText(nameStr);
-        }else{
-            holder.name.setText(String.valueOf(name.get(arrayPosition)));
-        }
+//      splitName();
+        holder.name.setText(String.valueOf(name.get(arrayPosition)));
         holder.position.setText(String.valueOf(position.get(arrayPosition)));
         holder.points.setText(String.valueOf(points.get(arrayPosition)));
         holder.itemView.setOnClickListener(new View.OnClickListener(){
@@ -93,3 +86,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         }
     }
 }
+//        METHOD FOR SPLIT NAME AND SURNAME
+//    private void splitName(){
+//        if(nameStr.length()>6 && nameStr.contains(" ")){
+//            String surName=nameStr.split(" ")[nameStr.split(" ").length-1];
+//            String firstName = nameStr.substring(0, nameStr.length() - surName.length());
+//            nameStr= firstName+ "\n" +surName;
+//            holder.name.setSingleLine(false);
+//            holder.name.setText(nameStr);
+//        }else{
+//            holder.name.setText(String.valueOf(name.get(arrayPosition)));
+//        }
+//    }
