@@ -14,7 +14,7 @@ public class Database extends SQLiteOpenHelper {
             "price INT(10) NOT NULL, " +
             "position VARCHAR(15) NOT NULL, " +
             "points INT(5) NOT NULL)";
-
+    private final String TABLE_NAME = "players";
     private Context context;
     private static final String DB_NAME = "players.db";
     public Database(Context context) {
@@ -46,7 +46,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("position",position);
         cv.put("points",Integer.parseInt(points));
 
-        long result = dbaseSQL.insert("players", null, cv);
+        long result = dbaseSQL.insert(TABLE_NAME, null, cv);
         if(result!=-1){
             Toast.makeText(context, R.string.infoAdded, Toast.LENGTH_SHORT).show();
         }else{
@@ -54,10 +54,16 @@ public class Database extends SQLiteOpenHelper {
         }
     }
     public void delPlayer(SQLiteDatabase dbaseSQL, String id){
-        dbaseSQL.execSQL("DELETE FROM " + "players" + " WHERE "+"code"+"='"+Integer.parseInt(id)+"'");
+        dbaseSQL.execSQL("DELETE FROM " + TABLE_NAME + " WHERE "+"code"+"='"+Integer.parseInt(id)+"'");
     }
-    public void updPlayer(SQLiteDatabase dbaseSQL, String name, String price, String position, String points){
-        Toast.makeText(context, "Entra", Toast.LENGTH_SHORT).show();
+    public void updPlayer(SQLiteDatabase dbaseSQL, String id, String name, String price, String position, String points){
+        ContentValues cv = new ContentValues();
+//        cv.put("code", Integer.parseInt(id));
+        cv.put("name",name);
+        cv.put("price",Integer.parseInt(price));
+        cv.put("position",position);
+        cv.put("points",Integer.parseInt(points));
+        dbaseSQL.update(TABLE_NAME, cv, "code="+Integer.parseInt(id), null);
     }
     public Cursor readData(){
        SQLiteDatabase db = this.getReadableDatabase();

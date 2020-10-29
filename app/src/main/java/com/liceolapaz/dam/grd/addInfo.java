@@ -100,7 +100,11 @@ public class addInfo extends AppCompatActivity {
                 if(dialOption==0){
                     delInfoDB();
                 }else if(dialOption==1){
-                    Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
+                    if(name.getText().toString().equals("") || price.getText().toString().equals("") || points.getText().toString().equals("")){
+                        Toast.makeText(addInfo.this, "Fill all the fields", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    updInfoDB();
                 }else{
                     Toast.makeText(addInfo.this, "Button cancel", Toast.LENGTH_SHORT).show();
                 }
@@ -244,6 +248,15 @@ public class addInfo extends AppCompatActivity {
         Intent initDbInfo = new Intent(this, DbInfo.class);
         startActivity(initDbInfo);
     }
+    private void updInfoDB(){
+        Database dbase = new Database(this);
+        SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
+        dbase.updPlayer(dbaseSQL, id.getText().toString(),name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
+        clearValues();
+        Intent initDbInfo = new Intent(this, DbInfo.class);
+        startActivity(initDbInfo);
+    }
+
     private void loadComponents(){
         fview();
         ArrayAdapter<String> adapter =
