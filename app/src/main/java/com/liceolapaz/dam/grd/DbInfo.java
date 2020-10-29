@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CursorAdapter;
@@ -22,22 +23,31 @@ public class DbInfo extends AppCompatActivity {
     ArrayList<String>id, name, price, position, points;
     CustomAdapter playerInfoAdapter;
     Cursor cursor;
-
+    TextView nPlayers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db_info);
 
         recyclerView = findViewById(R.id.playerList);
-
+        nPlayers = findViewById(R.id.nPlayers);
         retrieveData();
-//       Toast.makeText(this, , Toast.LENGTH_SHORT).show();
+
        playerInfoAdapter = new CustomAdapter(this, id, name, price,position,points);
        recyclerView.setAdapter(playerInfoAdapter);
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
 
+
+    }
+    private void getNPlayers(){
+        Database dbase = new Database(this);
+        SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
+        long nP = dbase.countPlayers(dbaseSQL);
+        String nPStr = Long.toString(nP);
+        nPlayers.setText(nPStr);
+    }
     public void retrieveData(){
+        getNPlayers();
         MainActivity.setSelectQuery("SELECT * FROM players");
         db = new Database(DbInfo.this);
         id = new ArrayList<>();

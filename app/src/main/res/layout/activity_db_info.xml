@@ -54,4 +54,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pListTxt"
         app:layout_constraintVertical_bias="0.216" />
+
+    <TextView
+        android:id="@+id/availablePlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:shadowColor="#000000"
+        android:shadowDx="13"
+        android:shadowDy="20"
+        android:shadowRadius="20"
+        android:text="@string/availablePl"
+        android:textAllCaps="true"
+        android:textColor="@color/txtLogin"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nPlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:shadowColor="#000000"
+        android:shadowDx="13"
+        android:shadowDy="20"
+        android:shadowRadius="20"
+        android:textAllCaps="true"
+        android:textColor="@color/txtLogin"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="nPlayers"
+        app:layout_constraintStart_toEndOf="@+id/availablePlayers"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

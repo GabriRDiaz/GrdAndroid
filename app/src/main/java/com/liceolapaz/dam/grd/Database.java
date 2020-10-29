@@ -3,6 +3,7 @@ package com.liceolapaz.dam.grd;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -64,6 +65,10 @@ public class Database extends SQLiteOpenHelper {
         cv.put("position",position);
         cv.put("points",Integer.parseInt(points));
         dbaseSQL.update(TABLE_NAME, cv, "code="+Integer.parseInt(id), null);
+    }
+    public long countPlayers(SQLiteDatabase dbaseSQL){
+        long count = DatabaseUtils.queryNumEntries(dbaseSQL, TABLE_NAME);
+        return count;
     }
     public Cursor readData(){
        SQLiteDatabase db = this.getReadableDatabase();
