@@ -53,7 +53,12 @@ public class Database extends SQLiteOpenHelper {
             Toast.makeText(context, R.string.infoNotAdded, Toast.LENGTH_SHORT).show();;
         }
     }
-
+    public void delPlayer(SQLiteDatabase dbaseSQL, String id){
+        dbaseSQL.execSQL("DELETE FROM " + "players" + " WHERE "+"code"+"='"+Integer.parseInt(id)+"'");
+    }
+    public void updPlayer(SQLiteDatabase dbaseSQL, String name, String price, String position, String points){
+        Toast.makeText(context, "Entra", Toast.LENGTH_SHORT).show();
+    }
     public Cursor readData(){
        SQLiteDatabase db = this.getReadableDatabase();
 

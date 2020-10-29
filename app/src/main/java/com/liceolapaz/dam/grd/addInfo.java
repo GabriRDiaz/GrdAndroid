@@ -98,7 +98,7 @@ public class addInfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(dialOption==0){
-                    Toast.makeText(addInfo.this, "Button delete", Toast.LENGTH_SHORT).show();
+                    delInfoDB();
                 }else if(dialOption==1){
                     Toast.makeText(addInfo.this, "Button accept", Toast.LENGTH_SHORT).show();
                 }else{
@@ -229,10 +229,17 @@ public class addInfo extends AppCompatActivity {
         return 1;
     }
     private void addInfoDb(){
-        Toast.makeText(this, "Entra", Toast.LENGTH_SHORT).show();
         Database dbase = new Database(this);
         SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
         dbase.addPlayer(dbaseSQL, name.getText().toString(), price.getText().toString(), (String)addPos.getSelectedItem(), points.getText().toString());
+        clearValues();
+        Intent initDbInfo = new Intent(this, DbInfo.class);
+        startActivity(initDbInfo);
+    }
+    private void delInfoDB(){
+        Database dbase = new Database(this);
+        SQLiteDatabase dbaseSQL = dbase.getWritableDatabase();
+        dbase.delPlayer(dbaseSQL,id.getText().toString());
         clearValues();
         Intent initDbInfo = new Intent(this, DbInfo.class);
         startActivity(initDbInfo);
