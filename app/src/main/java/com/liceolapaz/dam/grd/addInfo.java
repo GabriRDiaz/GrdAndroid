@@ -34,7 +34,7 @@ public class addInfo extends AppCompatActivity {
     TextView price;
     TextView points;
     byte add;
-    byte dialOption; //0-->Delete || 1-->Accept || 2-->Cancel
+    byte dialOption; // 0-->Delete || 1-->Accept || 2-->Cancel //
     final String[] DATA =
             {"FW","MF", "DF","GK"};
 
